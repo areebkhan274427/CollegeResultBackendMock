@@ -1,6 +1,7 @@
 package com.example.CollegeResult.Controllers;
 
 import com.example.CollegeResult.Dtos.BranchRequestDto;
+import com.example.CollegeResult.Dtos.BranchResponseDto;
 import com.example.CollegeResult.Dtos.StudentRequestDto;
 import com.example.CollegeResult.Services.BranchService;
 import com.example.CollegeResult.Services.StudentService;
@@ -32,6 +33,12 @@ public class BranchController {
         return new ResponseEntity<>(result,HttpStatus.FOUND);
     }
 
+    @GetMapping("get_grant")
+    public ResponseEntity<BranchResponseDto> getGrant(@RequestParam int grantMoney){
+        //here we are getting the Department with maximum Absolute no of passing students
+        // and setting the grant money and returning Branch
+        return new ResponseEntity<>(branchService.getGrant(grantMoney),HttpStatus.FOUND);
+    }
 
 
 
